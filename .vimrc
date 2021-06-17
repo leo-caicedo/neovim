@@ -20,7 +20,6 @@ set expandtab
 set autoindent
 set fileformat=unix
 
-"***********************************************************************************************************************************
 call plug#begin('~/.local/share/nvim/plugged')
 
 " Temas
@@ -35,20 +34,21 @@ Plug 'junegunn/fzf'
 Plug 'scrooloose/nerdtree'
 Plug 'airblade/vim-gitgutter'
 
-Plug 'tsony-tsonev/nerdtree-git-plugin'
-Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ryanoasis/vim-devicons'
-
+Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdcommenter'
 
 Plug 'easymotion/vim-easymotion'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-
+Plug 'neomake/neomake'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'machakann/vim-highlightedyank'
+Plug 'tmhedberg/SimpylFold'
 call plug#end()
-"***********************************************************************************************************************************
 
 " Airline
 let g:airline#extensions#branch#enabled = 1
@@ -83,7 +83,7 @@ let g:gruvbox_italic=1
 
 set background=dark
 
-colorscheme gruvbox
+colorscheme dracula
 
 " kite
 let g:kite_supported_languages = ['*',]
@@ -100,3 +100,21 @@ nmap <leader>q :q<CR>
 nmap <leader>f :FZF<CR>
 inoremap <c-space> <C-x><C-u>
 
+"when to activate neomake
+call neomake#configure#automake('nrw', 50)
+let g:neomake_python_pylint_maker = {
+  \ 'args': [
+  \ '-d', 'C0103, C0111',
+  \ '-f', 'text',
+  \ '--msg-template="{path}:{line}:{column}:{C}: [{symbol}] {msg}"',
+  \ '-r', 'n'
+  \ ],
+  \ 'errorformat':
+  \ '%A%f:%l:%c:%t: %m,' .
+  \ '%A%f:%l: %m,' .
+  \ '%A%f:(%l): %m,' .
+  \ '%-Z%p^%.%#,' .
+  \ '%-G%.%#',
+  \ }
+
+let g:neomake_python_enabled_makers = ['pylint']
