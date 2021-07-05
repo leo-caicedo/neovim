@@ -4,7 +4,7 @@ set relativenumber
 set number
 set mouse=a
 set numberwidth=1
-set scrolloff=7
+"set scrolloff=7
 set showcmd
 set ruler
 set cursorline
@@ -13,11 +13,11 @@ set showmatch
 set sw=2
 set laststatus=2
 let NERDTreeQuitOnOpen=1
-set tabstop=2
-set softtabstop=4
-set shiftwidth=4
-set expandtab
-set autoindent
+"set tabstop=2
+"set softtabstop=4
+"set shiftwidth=4
+"set expandtab
+"set autoindent
 set fileformat=unix
 
 call plug#begin('~/.local/share/nvim/plugged')
@@ -26,6 +26,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'sjl/badwolf'
 Plug 'morhetz/gruvbox'
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'joshdick/onedark.vim'
 
 " Utilidades
 Plug 'ctrlpvim/ctrlp.vim' " fuzzy find files
@@ -37,6 +38,7 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ryanoasis/vim-devicons'
 
 Plug 'jiangmiao/auto-pairs'
+"Plugin 'alvan/vim-closetag'
 Plug 'scrooloose/nerdcommenter'
 
 Plug 'easymotion/vim-easymotion'
@@ -48,6 +50,7 @@ Plug 'machakann/vim-highlightedyank'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+
 call plug#end()
 
 " Airline
@@ -56,6 +59,11 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+
+" Auto-pairs
+" alt-b
+" alt-n
+let g:AutoPairsFlyMode = 1
 
 " Start NERDTree when Vim is started without file arguments.
 autocmd StdinReadPre * let s:std_in=1
@@ -81,19 +89,19 @@ let g:gruvbox_contrast_dark='hard'
 let g:gruvbox_italic=1
 
 set background=dark
-
-colorscheme dracula
-
+let g:onedark_termcolors=256
+syntax on
+colorscheme gruvbox
 
 " shortcuts
 let mapleader=' '
-nmap <leader>s <Plug>(easymotion-s2)
+nmap <leader>e <Plug>(easymotion-s2)
 nmap <leader>n :NERDTreeToggle<CR>
 vmap ++ <plug>NERDCommenterToggle
 nmap ++ <plug>NERDCommenterToggle
 nmap <leader>w :w<CR>
 nmap <leader>q :q<CR>
-nmap <leader>f :FZF<CR>
+"nmap <leader>f :FZF<CR>
 
 
 "COC
@@ -212,7 +220,7 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " Show all diagnostics
 nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
 " Manage extensions
-nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+"nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
 " Show commands
 nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
 " Find symbol of current document
