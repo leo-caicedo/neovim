@@ -1,4 +1,4 @@
-syntax enable
+syntax on
 set clipboard+=unnamedplus
 set relativenumber
 set number
@@ -18,20 +18,22 @@ let NERDTreeQuitOnOpen=1
 "set shiftwidth=4
 "set expandtab
 "set autoindent
-set fileformat=unix
+"set fileformat=unix
 
 call plug#begin('~/.local/share/nvim/plugged')
 
 " Temas
-Plug 'sjl/badwolf'
-Plug 'morhetz/gruvbox'
 Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'joshdick/onedark.vim'
 
 " Utilidades
 Plug 'ctrlpvim/ctrlp.vim' " fuzzy find files
 Plug 'scrooloose/nerdtree'
 Plug 'airblade/vim-gitgutter'
+
+" airline
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'tpope/vim-fugitive'
 
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
@@ -43,10 +45,10 @@ Plug 'scrooloose/nerdcommenter'
 
 Plug 'easymotion/vim-easymotion'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'machakann/vim-highlightedyank'
+
+Plug 'pangloss/vim-javascript'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -54,11 +56,30 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 " Airline
-let g:airline#extensions#branch#enabled = 1
+let g:airline_experimental = 1
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline_powerline_fonts = 1
+
+" pangloss javascript
+set conceallevel=1
+let g:javascript_plugin_jsdoc = 1
+let g:javascript_plugin_ngdoc = 1
+let g:javascript_plugin_flow = 1
+let g:javascript_conceal_function             = "ƒ"
+let g:javascript_conceal_null                 = "ø"
+let g:javascript_conceal_this                 = "@"
+let g:javascript_conceal_return               = "⇚"
+let g:javascript_conceal_undefined            = "¿"
+let g:javascript_conceal_NaN                  = "ℕ"
+let g:javascript_conceal_prototype            = "¶"
+let g:javascript_conceal_static               = "•"
+let g:javascript_conceal_super                = "Ω"
+let g:javascript_conceal_arrow_function       = "⇒"
+let g:javascript_conceal_noarg_arrow_function = "🞅"
+let g:javascript_conceal_underscore_arrow_function = "🞅"
+
 
 " Auto-pairs
 " alt-b
@@ -78,20 +99,7 @@ let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclu
 
 " Temas
 set termguicolors
-
-
-" badwolf
-let g:badwolf_darkgutter = 1
-let g:badwolf_tabline = 3
-
-let g:gruvbox_contrast_dark='soft'
-let g:gruvbox_contrast_dark='hard'
-let g:gruvbox_italic=1
-
-set background=dark
-let g:onedark_termcolors=256
-syntax on
-colorscheme gruvbox
+colorscheme dracula
 
 " shortcuts
 let mapleader=' '
@@ -101,6 +109,9 @@ vmap ++ <plug>NERDCommenterToggle
 nmap ++ <plug>NERDCommenterToggle
 nmap <leader>w :w<CR>
 nmap <leader>q :q<CR>
+map <C-a> <esc>ggVG<CR>
+noremap <leader>gs :CocSearch
+:imap ii <Esc>
 "nmap <leader>f :FZF<CR>
 
 
