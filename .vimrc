@@ -23,7 +23,7 @@ let NERDTreeQuitOnOpen=1
 call plug#begin('~/.local/share/nvim/plugged')
 
 " Temas
-Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'yashguptaz/calvera-dark.nvim'
 
 " Utilidades
 Plug 'ctrlpvim/ctrlp.vim' " fuzzy find files
@@ -99,7 +99,12 @@ let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclu
 
 " Temas
 set termguicolors
-colorscheme dracula
+let g:calvera_italic_comments = 1
+let g:calvera_italic_keywords = 1
+let g:calvera_italic_functions = 1
+let g:calvera_contrast = 1
+
+colorscheme calvera
 
 " shortcuts
 let mapleader=' '
