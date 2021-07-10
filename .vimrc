@@ -1,4 +1,8 @@
 syntax on
+if has("autocmd")
+   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
+set background=dark
 set clipboard+=unnamedplus
 set relativenumber
 set number
@@ -23,12 +27,13 @@ let NERDTreeQuitOnOpen=1
 call plug#begin('~/.local/share/nvim/plugged')
 
 " Temas
-Plug 'yashguptaz/calvera-dark.nvim'
+Plug 'morhetz/gruvbox'
 
 " Utilidades
 Plug 'ctrlpvim/ctrlp.vim' " fuzzy find files
 Plug 'scrooloose/nerdtree'
 Plug 'airblade/vim-gitgutter'
+Plug 'francoiscabrol/ranger.vim'
 
 " airline
 Plug 'vim-airline/vim-airline'
@@ -61,7 +66,6 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline_powerline_fonts = 1
-let g:airline_theme='base16'
 
 " pangloss javascript
 set conceallevel=1
@@ -100,12 +104,8 @@ let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclu
 
 " Temas
 set termguicolors
-let g:calvera_italic_comments = 1
-let g:calvera_italic_keywords = 1
-let g:calvera_italic_functions = 1
-let g:calvera_contrast = 1
 
-colorscheme calvera
+colorscheme gruvbox
 
 " shortcuts
 let mapleader=' '
@@ -120,6 +120,12 @@ noremap <leader>gs :CocSearch
 :imap ii <Esc>
 "nmap <leader>f :FZF<CR>
 
+" ranger
+let g:ranger_map_keys = 0
+map <leader>1 :Ranger<CR>
+"let g:NERDTreeHijackNetrw = 0 // add this line if you use NERDTree
+"let g:ranger_replace_netrw = 1 // open ranger when vim open a directory
+let g:ranger_command_override = 'ranger --cmd "set show_hidden=true"'
 
 "COC
 let g:coc_global_extensions = [
@@ -129,6 +135,7 @@ let g:coc_global_extensions = [
   \ 'coc-eslint', 
   \ 'coc-prettier', 
   \ 'coc-json', 
+  \ 'coc-pyright', 
   \ ]
 " from readme
 " if hidden is not set, TextEdit might fail.
