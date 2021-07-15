@@ -8,10 +8,11 @@ set relativenumber
 set number
 set mouse=a
 set numberwidth=1
-"set scrolloff=7
+set scrolloff=8
 set showcmd
 set ruler
 set cursorline
+set cursorcolumn
 set encoding=utf-8
 set showmatch
 set sw=2
@@ -27,7 +28,7 @@ let NERDTreeQuitOnOpen=1
 call plug#begin('~/.local/share/nvim/plugged')
 
 " Temas
-Plug 'morhetz/gruvbox'
+Plug 'dracula/vim', { 'as': 'dracula' }
 
 " Utilidades
 Plug 'ctrlpvim/ctrlp.vim' " fuzzy find files
@@ -105,7 +106,7 @@ let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclu
 " Temas
 set termguicolors
 
-colorscheme gruvbox
+colorscheme dracula
 
 " shortcuts
 let mapleader=' '
@@ -117,7 +118,7 @@ nmap <leader>w :w<CR>
 nmap <leader>q :q<CR>
 map <C-a> <esc>ggVG<CR>
 noremap <leader>gs :CocSearch
-:imap ii <Esc>
+:imap <leader><leader> <Esc>
 "nmap <leader>f :FZF<CR>
 
 " ranger
