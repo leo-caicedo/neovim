@@ -29,6 +29,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 " Temas
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'sainnhe/everforest'
 
 " Utilidades
 Plug 'ctrlpvim/ctrlp.vim' " fuzzy find files
@@ -57,7 +58,7 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'pangloss/vim-javascript'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
+Plug 'Yggdroot/indentLine'
 
 call plug#end()
 
@@ -99,14 +100,18 @@ autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
     \ quit | endif
 
-let g:NERDTreeIgnore = ['^node_modules$']
+"let g:NERDTreeIgnore = ['^node_modules$']
 " ctrlp
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 " Temas
 set termguicolors
 
-colorscheme dracula
+let g:everforest_background = 'hard'
+let g:everforest_enable_italic = 1
+let g:everforest_cursor = 'aqua'
+
+colorscheme everforest
 
 " shortcuts
 let mapleader=' '
@@ -130,8 +135,6 @@ let g:ranger_command_override = 'ranger --cmd "set show_hidden=true"'
 
 "COC
 let g:coc_global_extensions = [
-  \ 'coc-snippets',
-  \ 'coc-pairs',
   \ 'coc-tsserver',
   \ 'coc-eslint', 
   \ 'coc-prettier', 
