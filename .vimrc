@@ -8,7 +8,7 @@ set relativenumber
 set number
 set mouse=a
 set numberwidth=1
-set scrolloff=8
+set scrolloff=6
 set showcmd
 set ruler
 set cursorline
@@ -28,14 +28,13 @@ let NERDTreeQuitOnOpen=1
 call plug#begin('~/.local/share/nvim/plugged')
 
 " Temas
-Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'sainnhe/everforest'
 
 " Utilidades
 Plug 'ctrlpvim/ctrlp.vim' " fuzzy find files
 Plug 'scrooloose/nerdtree'
 Plug 'airblade/vim-gitgutter'
-Plug 'francoiscabrol/ranger.vim'
+"Plug 'francoiscabrol/ranger.vim'
 
 " airline
 Plug 'vim-airline/vim-airline'
@@ -58,7 +57,7 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'pangloss/vim-javascript'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'Yggdroot/indentLine'
+"Plug 'Yggdroot/indentLine'
 
 call plug#end()
 
@@ -74,18 +73,18 @@ set conceallevel=1
 let g:javascript_plugin_jsdoc = 1
 let g:javascript_plugin_ngdoc = 1
 let g:javascript_plugin_flow = 1
-let g:javascript_conceal_function             = "ƒ"
-let g:javascript_conceal_null                 = "ø"
-let g:javascript_conceal_this                 = "@"
-let g:javascript_conceal_return               = "⇚"
-let g:javascript_conceal_undefined            = "¿"
-let g:javascript_conceal_NaN                  = "ℕ"
-let g:javascript_conceal_prototype            = "¶"
-let g:javascript_conceal_static               = "•"
-let g:javascript_conceal_super                = "Ω"
-let g:javascript_conceal_arrow_function       = "⇒"
-let g:javascript_conceal_noarg_arrow_function = "🞅"
-let g:javascript_conceal_underscore_arrow_function = "🞅"
+"let g:javascript_conceal_function             = "ƒ"
+"let g:javascript_conceal_null                 = "ø"
+"let g:javascript_conceal_this                 = "@"
+"let g:javascript_conceal_return               = "⇚"
+"let g:javascript_conceal_undefined            = "¿"
+"let g:javascript_conceal_NaN                  = "ℕ"
+"let g:javascript_conceal_prototype            = "¶"
+"let g:javascript_conceal_static               = "•"
+"let g:javascript_conceal_super                = "Ω"
+"let g:javascript_conceal_arrow_function       = "⇒"
+"let g:javascript_conceal_noarg_arrow_function = "🞅"
+"let g:javascript_conceal_underscore_arrow_function = "🞅"
 
 
 " Auto-pairs
@@ -100,7 +99,7 @@ autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
     \ quit | endif
 
-"let g:NERDTreeIgnore = ['^node_modules$']
+let g:NERDTreeIgnore = ['^node_modules$']
 " ctrlp
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
@@ -113,6 +112,13 @@ let g:everforest_cursor = 'aqua'
 
 colorscheme everforest
 
+" indentLine
+"let g:indentLine_defaultGroup = 'SpecialKey'
+"let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+"let g:indentLine_concealcursor = 'inc'
+"let g:indentLine_conceallevel = 2
+"let g:indentLine_enabled = 0
+
 " shortcuts
 let mapleader=' '
 nmap <leader>e <Plug>(easymotion-s2)
@@ -123,7 +129,8 @@ nmap <leader>w :w<CR>
 nmap <leader>q :q<CR>
 map <C-a> <esc>ggVG<CR>
 noremap <leader>gs :CocSearch
-:imap <leader><leader> <Esc>
+:imap jj <Esc>
+":imap <leader><leader> <Esc>
 "nmap <leader>f :FZF<CR>
 
 " ranger
