@@ -18,6 +18,14 @@ set showmatch
 set sw=2
 set laststatus=2
 let NERDTreeQuitOnOpen=1
+set exrc
+set smartindent
+set nohlsearch
+set nowrap
+set noswapfile
+set nobackup
+set incsearch
+set updatetime=50
 "set tabstop=2
 "set softtabstop=4
 "set shiftwidth=4
