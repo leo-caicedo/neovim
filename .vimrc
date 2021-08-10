@@ -39,7 +39,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'sainnhe/everforest'
 
 " Utilidades
-Plug 'ctrlpvim/ctrlp.vim' " fuzzy find files
 Plug 'scrooloose/nerdtree'
 Plug 'airblade/vim-gitgutter'
 "Plug 'francoiscabrol/ranger.vim'
@@ -108,8 +107,6 @@ autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTr
     \ quit | endif
 
 let g:NERDTreeIgnore = ['^node_modules$']
-" ctrlp
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 " Temas
 set termguicolors
