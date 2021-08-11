@@ -1,4 +1,5 @@
 syntax on
+set autoread
 if has("autocmd")
    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
@@ -41,7 +42,6 @@ Plug 'sainnhe/everforest'
 " Utilidades
 Plug 'scrooloose/nerdtree'
 Plug 'airblade/vim-gitgutter'
-"Plug 'francoiscabrol/ranger.vim'
 
 " airline
 Plug 'vim-airline/vim-airline'
@@ -65,6 +65,11 @@ Plug 'pangloss/vim-javascript'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "Plug 'Yggdroot/indentLine'
+
+" telescope
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
 call plug#end()
 
@@ -138,12 +143,11 @@ noremap <leader>gs :CocSearch
 ":imap <leader><leader> <Esc>
 "nmap <leader>f :FZF<CR>
 
-" ranger
-let g:ranger_map_keys = 0
-map <leader>1 :Ranger<CR>
-"let g:NERDTreeHijackNetrw = 0 // add this line if you use NERDTree
-"let g:ranger_replace_netrw = 1 // open ranger when vim open a directory
-let g:ranger_command_override = 'ranger --cmd "set show_hidden=true"'
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 "COC
 let g:coc_global_extensions = [
@@ -241,8 +245,8 @@ omap if <Plug>(coc-funcobj-i)
 omap af <Plug>(coc-funcobj-a)
 
 " Use <C-d> for select selections ranges, needs server support, like: coc-tsserver, coc-python
-nmap <silent> <C-d> <Plug>(coc-range-select)
-xmap <silent> <C-d> <Plug>(coc-range-select)
+nmap <silent> <C-f> <Plug>(coc-range-select)
+xmap <silent> <C-f> <Plug>(coc-range-select)
 
 " Use `:Format` to format current buffer
 command! -nargs=0 Format :call CocAction('format')
