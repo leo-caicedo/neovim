@@ -112,6 +112,9 @@ autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTr
     \ quit | endif
 
 let g:NERDTreeIgnore = ['^node_modules$']
+let g:NERDTreeDirArrowExpandable = '➢'
+let g:NERDTreeDirArrowCollapsible = '⇣'
+
 
 " Temas
 set termguicolors
@@ -119,6 +122,7 @@ set termguicolors
 let g:everforest_background = 'hard'
 let g:everforest_enable_italic = 1
 let g:everforest_cursor = 'aqua'
+let g:everforest_transparent_background = 1
 
 colorscheme everforest
 
