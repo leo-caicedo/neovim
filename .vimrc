@@ -9,7 +9,7 @@ set relativenumber
 set number
 set mouse=a
 set numberwidth=1
-set scrolloff=6
+set scrolloff=8
 set showcmd
 set ruler
 set cursorline
@@ -64,7 +64,7 @@ Plug 'machakann/vim-highlightedyank'
 
 Plug 'pangloss/vim-javascript'
 
-"Plug 'Yggdroot/indentLine'
+Plug 'Yggdroot/indentLine'
 
 " telescope
 Plug 'nvim-lua/popup.nvim'
@@ -131,10 +131,10 @@ let g:everforest_cursor = 'aqua'
 colorscheme everforest
 
 " indentLine
-"let g:indentLine_defaultGroup = 'SpecialKey'
-"let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-"let g:indentLine_concealcursor = 'inc'
-"let g:indentLine_conceallevel = 2
+let g:indentLine_defaultGroup = 'SpecialKey'
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+let g:indentLine_concealcursor = 'inc'
+let g:indentLine_conceallevel = 2
 "let g:indentLine_enabled = 0
 
 " shortcuts
