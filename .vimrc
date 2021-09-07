@@ -13,7 +13,7 @@ set scrolloff=8
 set showcmd
 set ruler
 set cursorline
-set cursorcolumn
+"set cursorcolumn
 set encoding=utf-8
 set showmatch
 set sw=2
@@ -22,7 +22,6 @@ let NERDTreeQuitOnOpen=1
 set exrc
 set smartindent
 set nohlsearch
-set nowrap
 set noswapfile
 set nobackup
 set incsearch
