@@ -9,11 +9,11 @@ set relativenumber
 set number
 set mouse=a
 set numberwidth=1
-set scrolloff=6
+set scrolloff=8
 set showcmd
 set ruler
 set cursorline
-set cursorcolumn
+"set cursorcolumn
 set encoding=utf-8
 set showmatch
 set sw=2
@@ -22,7 +22,6 @@ let NERDTreeQuitOnOpen=1
 set exrc
 set smartindent
 set nohlsearch
-set nowrap
 set noswapfile
 set nobackup
 set incsearch
@@ -64,7 +63,7 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'pangloss/vim-javascript'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"Plug 'Yggdroot/indentLine'
+Plug 'Yggdroot/indentLine'
 
 " telescope
 Plug 'nvim-lua/popup.nvim'
@@ -122,15 +121,15 @@ set termguicolors
 let g:everforest_background = 'hard'
 let g:everforest_enable_italic = 1
 let g:everforest_cursor = 'aqua'
-let g:everforest_transparent_background = 1
+"let g:everforest_transparent_background = 1
 
 colorscheme everforest
 
 " indentLine
-"let g:indentLine_defaultGroup = 'SpecialKey'
-"let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-"let g:indentLine_concealcursor = 'inc'
-"let g:indentLine_conceallevel = 2
+let g:indentLine_defaultGroup = 'SpecialKey'
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+let g:indentLine_concealcursor = 'inc'
+let g:indentLine_conceallevel = 2
 "let g:indentLine_enabled = 0
 
 " shortcuts
@@ -164,7 +163,6 @@ let g:coc_global_extensions = [
 " from readme
 " if hidden is not set, TextEdit might fail.
 set hidden " Some servers have issues with backup files, see #649 set nobackup set nowritebackup " Better display for messages set cmdheight=2 " You will have bad experience for diagnostic messages when it's default 4000.
-set updatetime=300
 
 " don't give |ins-completion-menu| messages.
 set shortmess+=c
