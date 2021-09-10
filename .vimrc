@@ -52,7 +52,7 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ryanoasis/vim-devicons'
 
 Plug 'jiangmiao/auto-pairs'
-"Plugin 'alvan/vim-closetag'
+Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdcommenter'
 
 Plug 'easymotion/vim-easymotion'
@@ -60,7 +60,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'machakann/vim-highlightedyank'
 
-Plug 'pangloss/vim-javascript'
+Plug 'sheerun/vim-polyglot'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'Yggdroot/indentLine'
@@ -78,25 +78,6 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline_powerline_fonts = 1
-
-" pangloss javascript
-set conceallevel=1
-let g:javascript_plugin_jsdoc = 1
-let g:javascript_plugin_ngdoc = 1
-let g:javascript_plugin_flow = 1
-"let g:javascript_conceal_function             = "ƒ"
-"let g:javascript_conceal_null                 = "ø"
-"let g:javascript_conceal_this                 = "@"
-"let g:javascript_conceal_return               = "⇚"
-"let g:javascript_conceal_undefined            = "¿"
-"let g:javascript_conceal_NaN                  = "ℕ"
-"let g:javascript_conceal_prototype            = "¶"
-"let g:javascript_conceal_static               = "•"
-"let g:javascript_conceal_super                = "Ω"
-"let g:javascript_conceal_arrow_function       = "⇒"
-"let g:javascript_conceal_noarg_arrow_function = "🞅"
-"let g:javascript_conceal_underscore_arrow_function = "🞅"
-
 
 " Auto-pairs
 " alt-b
@@ -143,8 +124,6 @@ nmap <leader>q :q<CR>
 map <C-a> <esc>ggVG<CR>
 noremap <leader>gs :CocSearch
 :imap jj <Esc>
-":imap <leader><leader> <Esc>
-"nmap <leader>f :FZF<CR>
 
 " Find files using Telescope command-line sugar.
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
