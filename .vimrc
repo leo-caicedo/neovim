@@ -73,7 +73,13 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 
+" Snippets
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
 call plug#end()
+
+let g:UltiSnipsExpandTrigger="."
 
 " Airline
 let g:airline_experimental = 1
@@ -142,6 +148,7 @@ let g:coc_global_extensions = [
   \ 'coc-json', 
   \ 'coc-pyright',
   \ 'coc-html',
+  \ 'coc-css',
   \ ]
 " from readme
 " if hidden is not set, TextEdit might fail.
