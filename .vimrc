@@ -62,6 +62,8 @@ Plug 'machakann/vim-highlightedyank'
 
 Plug 'sheerun/vim-polyglot'
 
+Plug 'alvan/vim-closetag'
+
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'Yggdroot/indentLine'
 
@@ -137,7 +139,8 @@ let g:coc_global_extensions = [
   \ 'coc-eslint', 
   \ 'coc-prettier', 
   \ 'coc-json', 
-  \ 'coc-pyright', 
+  \ 'coc-pyright',
+  \ 'coc-html',
   \ ]
 " from readme
 " if hidden is not set, TextEdit might fail.
