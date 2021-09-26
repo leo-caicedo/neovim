@@ -37,7 +37,9 @@ set hidden
 call plug#begin('~/.local/share/nvim/plugged')
 
 " Temas
-Plug 'sainnhe/everforest'
+"Plug 'sainnhe/everforest'
+"Plug 'joshdick/onedark.vim'
+Plug 'dracula/vim', { 'as': 'dracula' }
 
 " Utilidades
 Plug 'scrooloose/nerdtree'
@@ -79,7 +81,7 @@ Plug 'honza/vim-snippets'
 
 call plug#end()
 
-let g:UltiSnipsExpandTrigger="."
+let g:UltiSnipsExpandTrigger="<C-j>"
 
 " Airline
 let g:airline_experimental = 1
@@ -108,12 +110,12 @@ let g:NERDTreeDirArrowCollapsible = '⇣'
 " Temas
 set termguicolors
 
-let g:everforest_background = 'hard'
-let g:everforest_enable_italic = 1
-let g:everforest_cursor = 'aqua'
+"let g:everforest_background = 'hard'
+"let g:everforest_enable_italic = 1
+"let g:everforest_cursor = 'aqua'
 "let g:everforest_transparent_background = 1
 
-colorscheme everforest
+colorscheme dracula
 
 " indentLine
 let g:indentLine_defaultGroup = 'SpecialKey'
