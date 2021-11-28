@@ -38,8 +38,10 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 " Temas
 "Plug 'sainnhe/everforest'
-"Plug 'joshdick/onedark.vim'
-Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'joshdick/onedark.vim'
+"Plug 'morhetz/gruvbox'
+Plug 'gruvbox-community/gruvbox'
+"Plug 'dracula/vim', { 'as': 'dracula' }
 
 " Utilidades
 Plug 'scrooloose/nerdtree'
@@ -75,6 +77,10 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 
+" fzf
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+
 " Snippets
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
@@ -102,7 +108,7 @@ autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
     \ quit | endif
 
-let g:NERDTreeIgnore = ['^node_modules$']
+let g:NERDTreeIgnore = ['^node_modules$', 'vendor']
 let g:NERDTreeDirArrowExpandable = '➢'
 let g:NERDTreeDirArrowCollapsible = '⇣'
 
@@ -115,7 +121,8 @@ set termguicolors
 "let g:everforest_cursor = 'aqua'
 "let g:everforest_transparent_background = 1
 
-colorscheme dracula
+colorscheme gruvbox
+highlight Normal guibg=none 
 
 " indentLine
 let g:indentLine_defaultGroup = 'SpecialKey'
@@ -130,17 +137,20 @@ nmap <leader>e <Plug>(easymotion-s2)
 nmap <leader>n :NERDTreeToggle<CR>
 vmap ++ <plug>NERDCommenterToggle
 nmap ++ <plug>NERDCommenterToggle
-nmap <leader>w :w<CR>
-nmap <leader>q :q<CR>
+nmap <C-s> :w<CR>
+nmap <C-w> :q<CR>
+nmap <C-p> :Ag<CR>
 map <C-a> <esc>ggVG<CR>
 noremap <leader>gs :CocSearch
-:imap jj <Esc>
+:imap jk <Esc>
 
 " Find files using Telescope command-line sugar.
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>bb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>ps :lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})<cr>
+let g:ackprg = 'ag --vimgrep'
 
 "COC
 let g:coc_global_extensions = [
@@ -151,6 +161,7 @@ let g:coc_global_extensions = [
   \ 'coc-pyright',
   \ 'coc-html',
   \ 'coc-css',
+  \ 'coc-phpls'
   \ ]
 " from readme
 " if hidden is not set, TextEdit might fail.
