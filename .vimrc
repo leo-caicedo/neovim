@@ -1,4 +1,5 @@
 syntax on
+let g:neovide_cursor_vfx_mode = "sonicboom"
 set autoread
 if has("autocmd")
    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -38,14 +39,19 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 " Temas
 "Plug 'sainnhe/everforest'
-Plug 'joshdick/onedark.vim'
+"Plug 'joshdick/onedark.vim'
 "Plug 'morhetz/gruvbox'
-Plug 'gruvbox-community/gruvbox'
-"Plug 'dracula/vim', { 'as': 'dracula' }
+"Plug 'gruvbox-community/gruvbox'
+Plug 'dracula/vim', { 'as': 'dracula' }
+"Plug 'bluz71/vim-nightfly-guicolors'
 
 " Utilidades
 Plug 'scrooloose/nerdtree'
 Plug 'airblade/vim-gitgutter'
+Plug 'karb94/neoscroll.nvim'
+Plug 'akinsho/bufferline.nvim'
+Plug 'norcalli/nvim-colorizer.lua'
+Plug 'lukas-reineke/indent-blankline.nvim'
 
 " airline
 Plug 'vim-airline/vim-airline'
@@ -55,6 +61,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ryanoasis/vim-devicons'
+Plug 'kyazdani42/nvim-web-devicons'
 
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
@@ -65,12 +72,11 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'machakann/vim-highlightedyank'
 
-Plug 'sheerun/vim-polyglot'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 Plug 'alvan/vim-closetag'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'Yggdroot/indentLine'
 
 " telescope
 Plug 'nvim-lua/popup.nvim'
@@ -91,9 +97,7 @@ let g:UltiSnipsExpandTrigger="<C-j>"
 
 " Airline
 let g:airline_experimental = 1
-let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline_powerline_fonts = 1
 
 " Auto-pairs
@@ -118,18 +122,13 @@ set termguicolors
 
 "let g:everforest_background = 'hard'
 "let g:everforest_enable_italic = 1
-"let g:everforest_cursor = 'aqua'
 "let g:everforest_transparent_background = 1
 
-colorscheme gruvbox
-highlight Normal guibg=none 
+"let g:nightflyNormalFloat = 1
+"let g:nightflyUnderlineMatchParen = 1
 
-" indentLine
-let g:indentLine_defaultGroup = 'SpecialKey'
-let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-let g:indentLine_concealcursor = 'inc'
-let g:indentLine_conceallevel = 2
-"let g:indentLine_enabled = 0
+colorscheme dracula
+"highlight Normal guibg=none 
 
 " shortcuts
 let mapleader=' '
@@ -151,6 +150,10 @@ nnoremap <leader>bb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>ps :lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})<cr>
 let g:ackprg = 'ag --vimgrep'
+
+" Bufferline
+nnoremap <TAB> :BufferLineCycleNext<CR>
+nnoremap <leader><TAB> :BufferLineCyclePrev<CR>
 
 "COC
 let g:coc_global_extensions = [
