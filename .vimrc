@@ -1,5 +1,4 @@
 syntax on
-let g:neovide_cursor_vfx_mode = "sonicboom"
 set autoread
 if has("autocmd")
    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -21,7 +20,7 @@ set sw=2
 set laststatus=2
 let NERDTreeQuitOnOpen=1
 set exrc
-set smartindent
+"set smartindent
 set nohlsearch
 set noswapfile
 set nobackup
@@ -39,10 +38,10 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 " Temas
 "Plug 'sainnhe/everforest'
-"Plug 'joshdick/onedark.vim'
+Plug 'joshdick/onedark.vim'
 "Plug 'morhetz/gruvbox'
 "Plug 'gruvbox-community/gruvbox'
-Plug 'dracula/vim', { 'as': 'dracula' }
+"Plug 'dracula/vim', { 'as': 'dracula' }
 "Plug 'bluz71/vim-nightfly-guicolors'
 
 " Utilidades
@@ -118,7 +117,7 @@ let g:NERDTreeDirArrowCollapsible = '⇣'
 
 
 " Temas
-set termguicolors
+"set termguicolors
 
 "let g:everforest_background = 'hard'
 "let g:everforest_enable_italic = 1
@@ -127,7 +126,7 @@ set termguicolors
 "let g:nightflyNormalFloat = 1
 "let g:nightflyUnderlineMatchParen = 1
 
-colorscheme dracula
+"colorscheme dracula
 "highlight Normal guibg=none 
 
 " shortcuts
@@ -146,7 +145,7 @@ noremap <leader>gs :CocSearch
 " Find files using Telescope command-line sugar.
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>bb <cmd>Telescope buffers<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>ps :lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})<cr>
 let g:ackprg = 'ag --vimgrep'

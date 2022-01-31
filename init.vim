@@ -2,8 +2,7 @@ set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath=&runtimepath
 
 source ~/.config/nvim/.vimrc
-"lua require('neoscroll').setup()
-"require("bufferline").setup{}
+source ~/.config/nvim/themes/onedark.vim
 lua << EOF
 require('neoscroll').setup()
 require("bufferline").setup{}
@@ -24,12 +23,12 @@ vim.opt.listchars:append("eol:↴")
 require("indent_blankline").setup {
     space_char_blankline = " ",
     char_highlight_list = {
-        "IndentBlanklineIndent1",
-        "IndentBlanklineIndent2",
-        "IndentBlanklineIndent3",
-        "IndentBlanklineIndent4",
-        "IndentBlanklineIndent5",
-        "IndentBlanklineIndent6",
+	"IndentBlanklineIndent1",
+	"IndentBlanklineIndent2",
+	"IndentBlanklineIndent3",
+	"IndentBlanklineIndent4",
+	"IndentBlanklineIndent5",
+	"IndentBlanklineIndent6",
     },
 }
 
@@ -47,7 +46,7 @@ require'nvim-treesitter.configs'.setup {
     },
   },
 indent = {
-  enable = true
+  enable = false
   }
 }
 EOF
