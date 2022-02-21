@@ -20,7 +20,7 @@ set sw=2
 set laststatus=2
 let NERDTreeQuitOnOpen=1
 set exrc
-"set smartindent
+set smartindent
 set nohlsearch
 set noswapfile
 set nobackup
