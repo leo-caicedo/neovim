@@ -18,7 +18,6 @@ set encoding=utf-8
 set showmatch
 set sw=2
 set laststatus=2
-let NERDTreeQuitOnOpen=1
 set exrc
 set smartindent
 set nohlsearch
@@ -39,27 +38,34 @@ call plug#begin('~/.local/share/nvim/plugged')
 " Temas
 "Plug 'sainnhe/everforest'
 Plug 'joshdick/onedark.vim'
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 "Plug 'morhetz/gruvbox'
 "Plug 'gruvbox-community/gruvbox'
 "Plug 'dracula/vim', { 'as': 'dracula' }
 "Plug 'bluz71/vim-nightfly-guicolors'
 
 " Utilidades
-Plug 'scrooloose/nerdtree'
+"Plug 'scrooloose/nerdtree'
 Plug 'airblade/vim-gitgutter'
 Plug 'karb94/neoscroll.nvim'
 Plug 'akinsho/bufferline.nvim'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'APZelos/blamer.nvim'
+Plug 'ntpeters/vim-better-whitespace'
+
+"lualine
+Plug 'nvim-lualine/lualine.nvim'
 
 " airline
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+"Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
 
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'ryanoasis/vim-devicons'
+"Plug 'Xuyuanp/nerdtree-git-plugin'
+"Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+"Plug 'ryanoasis/vim-devicons'
+Plug 'kyazdani42/nvim-tree.lua'
 Plug 'kyazdani42/nvim-web-devicons'
 
 Plug 'jiangmiao/auto-pairs'
@@ -81,14 +87,15 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
 " fzf
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
+"Plug 'junegunn/fzf'
+"Plug 'junegunn/fzf.vim'
 
 " Snippets
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+"Plug 'SirVer/ultisnips'
+"Plug 'honza/vim-snippets'
 
 call plug#end()
 
@@ -105,19 +112,19 @@ let g:airline_powerline_fonts = 1
 let g:AutoPairsFlyMode = 1
 
 " Start NERDTree when Vim is started without file arguments.
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
+"autocmd StdinReadPre * let s:std_in=1
+"autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
 " Exit Vim if NERDTree is the only window left.
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
-    \ quit | endif
+"autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
+    "\ quit | endif
 
-let g:NERDTreeIgnore = ['^node_modules$', 'vendor']
-let g:NERDTreeDirArrowExpandable = '➢'
-let g:NERDTreeDirArrowCollapsible = '⇣'
+"let g:NERDTreeIgnore = ['^node_modules$', 'vendor']
+"let g:NERDTreeDirArrowExpandable = '➢'
+"let g:NERDTreeDirArrowCollapsible = '⇣'
 
 
 " Temas
-"set termguicolors
+set termguicolors
 
 "let g:everforest_background = 'hard'
 "let g:everforest_enable_italic = 1
@@ -126,13 +133,28 @@ let g:NERDTreeDirArrowCollapsible = '⇣'
 "let g:nightflyNormalFloat = 1
 "let g:nightflyUnderlineMatchParen = 1
 
-"colorscheme dracula
-"highlight Normal guibg=none 
+let g:tokyonight_style = "night"
+let g:tokyonight_italic_functions = 1
+let g:tokyonight_sidebars = [ "qf", "vista_kind", "terminal", "packer" ]
 
+" Change the "hint" color to the "orange" color, and make the "error" color bright red
+let g:tokyonight_colors = {
+  \ 'hint': 'orange',
+  \ 'error': '#ff0000'
+\ }
+
+let g:better_whitespace_guicolor='#00ffd2'
+
+highlight NvimTreeSymlink guifg=blue gui=bold,underline
+colorscheme tokyonight
+"highlight Normal guibg=none
+
+"source ~/.config/nvim/themes/onedark.vim
 " shortcuts
 let mapleader=' '
 nmap <leader>e <Plug>(easymotion-s2)
-nmap <leader>n :NERDTreeToggle<CR>
+"nmap <leader>n :NERDTreeToggle<CR>
+nmap <leader>n :NvimTreeFindFileToggle<CR>
 vmap ++ <plug>NERDCommenterToggle
 nmap ++ <plug>NERDCommenterToggle
 nmap <C-s> :w<CR>
@@ -143,7 +165,7 @@ noremap <leader>gs :CocSearch
 :imap jk <Esc>
 
 " Find files using Telescope command-line sugar.
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>ff <cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
@@ -154,12 +176,17 @@ let g:ackprg = 'ag --vimgrep'
 nnoremap <TAB> :BufferLineCycleNext<CR>
 nnoremap <leader><TAB> :BufferLineCyclePrev<CR>
 
+"blamer
+let g:blamer_enabled = 1
+let g:blamer_prefix = ' ➤ '
+highlight Blamer guifg=grey
+
 "COC
 let g:coc_global_extensions = [
   \ 'coc-tsserver',
-  \ 'coc-eslint', 
-  \ 'coc-prettier', 
-  \ 'coc-json', 
+  \ 'coc-eslint',
+  \ 'coc-prettier',
+  \ 'coc-json',
   \ 'coc-pyright',
   \ 'coc-html',
   \ 'coc-css',
@@ -176,26 +203,30 @@ set shortmess+=c
 set signcolumn=yes
 
 " Use tab for trigger completion with characters ahead and navigate.
-" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#pum#visible() ? coc#pum#next(1):
+      \ CheckBackspace() ? "\<Tab>" :
       \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
-function! s:check_back_space() abort
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice.
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+function! CheckBackspace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 " Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
-
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
-" Coc only does snippet and additional edit on confirm.
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-" Or use `complete_info` if your vim support it, like:
-" inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
 
 " Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)

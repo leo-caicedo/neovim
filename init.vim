@@ -2,10 +2,29 @@ set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath=&runtimepath
 
 source ~/.config/nvim/.vimrc
-source ~/.config/nvim/themes/onedark.vim
 lua << EOF
+require('telescope').setup{ defaults = { file_ignore_patterns = {"node_modules", "vendor"} } } 
+require('telescope').load_extension('fzf')
 require('neoscroll').setup()
 require("bufferline").setup{}
+require('lualine').setup()
+require("nvim-tree").setup({
+  sort_by = "case_sensitive",
+  view = {
+    adaptive_size = true,
+    mappings = {
+      list = {
+        { key = "u", action = "dir_up" },
+      },
+    },
+  },
+  renderer = {
+    group_empty = true,
+  },
+  filters = {
+    dotfiles = true,
+  },
+})
 require'colorizer'.setup()
 
 vim.opt.termguicolors = true

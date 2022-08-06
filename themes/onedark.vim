@@ -2,7 +2,7 @@
 if (has("autocmd") && !has("gui_running"))
   augroup colorset
     autocmd!
-    let s:white = { "gui": "#ff577d", "cterm": "145", "cterm16" : "7" }
+    let s:white = { "gui": "#FD4070", "cterm": "145", "cterm16" : "7" }
     autocmd ColorScheme * call onedark#set_highlight("Normal", { "fg": s:white }) " `bg` will not be styled since there is no `bg` setting
   augroup END
 endif
