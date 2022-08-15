@@ -38,9 +38,9 @@ call plug#begin('~/.local/share/nvim/plugged')
 " Temas
 "Plug 'sainnhe/everforest'
 Plug 'joshdick/onedark.vim'
-Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+"Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 "Plug 'morhetz/gruvbox'
-"Plug 'gruvbox-community/gruvbox'
+Plug 'gruvbox-community/gruvbox'
 "Plug 'dracula/vim', { 'as': 'dracula' }
 "Plug 'bluz71/vim-nightfly-guicolors'
 
@@ -74,7 +74,7 @@ Plug 'scrooloose/nerdcommenter'
 
 Plug 'easymotion/vim-easymotion'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'terryma/vim-multiple-cursors'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'machakann/vim-highlightedyank'
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -109,7 +109,7 @@ let g:airline_powerline_fonts = 1
 " Auto-pairs
 " alt-b
 " alt-n
-let g:AutoPairsFlyMode = 1
+let g:AutoPairsFlyMode = 0
 
 " Start NERDTree when Vim is started without file arguments.
 "autocmd StdinReadPre * let s:std_in=1
@@ -126,28 +126,16 @@ let g:AutoPairsFlyMode = 1
 " Temas
 set termguicolors
 
-"let g:everforest_background = 'hard'
-"let g:everforest_enable_italic = 1
-"let g:everforest_transparent_background = 1
-
-"let g:nightflyNormalFloat = 1
-"let g:nightflyUnderlineMatchParen = 1
-
-let g:tokyonight_style = "night"
-let g:tokyonight_italic_functions = 1
-let g:tokyonight_sidebars = [ "qf", "vista_kind", "terminal", "packer" ]
-
-" Change the "hint" color to the "orange" color, and make the "error" color bright red
-let g:tokyonight_colors = {
+"" Change the "hint" color to the "orange" color, and make the "error" color bright red
+let g:onedark_color = {
   \ 'hint': 'orange',
   \ 'error': '#ff0000'
 \ }
 
-let g:better_whitespace_guicolor='#00ffd2'
-
+let g:better_whitespace_guicolor='#0fae5c'
 highlight NvimTreeSymlink guifg=blue gui=bold,underline
-colorscheme tokyonight
-"highlight Normal guibg=none
+colorscheme onedark
+highlight Normal guibg=none
 
 "source ~/.config/nvim/themes/onedark.vim
 " shortcuts
